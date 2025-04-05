@@ -12,10 +12,10 @@ async def ping_all(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if "@all" in text:
         if chat_id in PING_TARGETS:
             mentions = " ".join(PING_TARGETS[chat_id])
-            await update.message.reply_text(f"Пингую: {mentions}")
+            await update.message.reply_text(f"Pinging: {mentions}")
         else:
-            await update.message.reply_text("Я не знаю, кого пинговать в этой группе.")
+            await update.message.reply_text("Nobody for pinging.")
 
-app = ApplicationBuilder().token("7940687639:AAEBKOws2l1gC59np2jGNpw_1FqZW8UilAY").build()
+app = ApplicationBuilder().token("YOUR_TELEGRAM_BOT_TOKEN").build()
 app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), ping_all))
 app.run_polling()
